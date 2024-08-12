@@ -1,0 +1,36 @@
+#This program will allow user entry to guess a number between 1 and 20
+
+import random
+
+def game(turns_left):
+    while turns_left > 0:
+        guess = input("Please enter an integer between 1 and 20: ")
+        guess = int(guess)
+        if guess == answer:
+            print("Correct! the answer was", guess)
+            break
+        elif guess > answer:
+            print("Your guess was too high, try again!")
+            turns_left -= 1
+            print("You have", turns_left, "turns left \n")
+            game(turns_left)        
+        elif guess < answer:
+            print("Your guess was too low, try again!")
+            turns_left -= 1
+            print("You have", turns_left, "turns left \n")
+            game(turns_left) 
+        if turns_left == 0:
+            print("Better luck next time! \n")
+            break     
+        break     
+
+#main()
+
+print("Welcome to Jeremy's fancy guess a number game \n")
+print("You will have six tries to guess the number \n")
+
+answer = random.randrange(1, 21, 1)
+turns_left = 6      #start with 6 turns for user
+
+game(turns_left)
+

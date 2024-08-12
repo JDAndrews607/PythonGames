@@ -1,0 +1,397 @@
+#This program is a compilation of all the games in this directory for use in application portfolio. 
+#It is to serve as part of a larger portfolio to display competancy in different coding languages
+#Many games taken from "Invent your own computer games with python", 4th edition, by Al Sweigart, 2017, self published by author
+#Jokes in game #2 taken from "https://www.weareteachers.com/science-jokes/"
+
+import random
+import time
+
+
+def game_select():
+    print("0: Choose a random game")
+    print("1: Guess the number")
+    print("2: A corny joke telling program")
+    print("3: Choose your own adventure")
+    print("4: ")
+    choice = input("Select a number from the list above to launch a game, or exit to leave program ")
+    choice = int(choice)
+    if choice == 0:
+        choice = random.randint(1,2)    #change end point to highest choice number. Remove comment when finished
+    if choice == 1:
+        guess_the_number()
+    elif choice == 2:
+        joke_program()
+    elif choice == 3:
+        choose_adventure()
+    elif choice == 4:
+        pass
+
+    
+    elif choice.lower() == 'exit':
+        print("Thank you for playing!")
+        quit()
+
+    print("You have chosen ", choice)
+
+
+    play_again = input("Would you like to play another game? [Y/N] ")
+    play_again = play_again.strip()
+    play_again = play_again.lower()
+    
+    if play_again == 'y':
+        game_select()
+    else:
+        print("Thank you for playing!")
+
+
+
+
+
+
+###############################################################################
+
+def guess_the_number():
+    
+    def game(turns_left):
+        while turns_left > 0:
+            guess = input("Please enter an integer between 1 and 20: ")
+            guess = int(guess)
+            if guess == answer:
+                print("Correct! the answer was", guess)
+                break
+            elif guess > answer:
+                print("Your guess was too high, try again!")
+                turns_left -= 1
+                print("You have", turns_left, "turns left \n")
+                game(turns_left)        
+            elif guess < answer:
+                print("Your guess was too low, try again!")
+                turns_left -= 1
+                print("You have", turns_left, "turns left \n")
+                game(turns_left) 
+            if turns_left == 0:
+                print("Better luck next time \n")
+                break    
+            break          
+
+    print("Welcome to Jeremy's fancy guess a number game \n")
+    print("You will have six tries to guess the number \n")
+
+    answer = random.randrange(1, 21, 1)
+    turns_left = 6      #start with 6 turns for user
+
+    game(turns_left)
+
+
+###############################################################################
+
+def joke_program():
+
+
+    def jokes():
+
+        pickJoke = random.randint(1, 16)
+        joke_list(pickJoke)
+
+        func_choice = input("Would you like to hear another joke? [Y/N] ")
+        func_choice = func_choice.strip()
+        if func_choice.lower() == 'y':
+            jokes()
+        elif func_choice.lower() == 'n':
+            print("Thanks for playing!")
+
+
+    def joke_list(num):
+        print("")
+        if num == 1:
+            print("I was reading a book on helium")
+            time.sleep(3)
+            print("I couldn't put it down!")
+            time.sleep(2)
+        if num == 2:
+            print("How do you cut the sea in half?")
+            time.sleep(3)
+            print("With a sea-saw!")
+            time.sleep (2)
+        if num == 3:
+            print("WHy did the germ cross the microscope?")
+            time.sleep(3)
+            print("To get to the other slide!")
+            time.sleep(2)
+        if num == 4:
+            print("What do computers like to eat?")
+            time.sleep(3)
+            print("Chips!")
+            time.sleep(2)
+        if num == 5:
+            print("What can run but cannot walk?")
+            time.sleep(3)
+            print("Water!")
+            time.sleep(2)
+            print("That one was a bit deep")
+            time.sleep(2)
+        if num == 6:
+            print("Why did the scientist take out his doorbell?")
+            time.sleep(3)
+            print("He wanted the no-bell prize!")
+            time.sleep(2)
+        if num == 7:
+            print("Why didn't the skeleton go to the ball?")
+            time.sleep(3)
+            print("He didn't have any-body to go with!")
+            time.sleep(2)
+        if num == 8:
+            print("What kind of hair do oceans have?")
+            time.sleep(3)
+            print("Wavy!")
+            time.sleep(2)
+        if num == 9:
+            print("What kind of tree can fit into your hand?")
+            time.sleep(3)
+            print("A palm tree!")
+            time.sleep(2)
+        if num == 10:
+            print("Why didn't the skeleton cross the road?")
+            time.sleep(3)
+            print("He didn't have the guts!")
+            time.sleep(2)
+        if num == 11:
+            print("Why is the pH of youtube very stable?")
+            time.sleep(3)
+            print("Because it constantly buffers!")
+            time.sleep(2)
+        if num == 12:
+            print("What do you call an acid with an attitude?")
+            time.sleep(3)
+            print("An a-mean-oh acid!")
+            time.sleep(2)
+        if num == 13:
+            print("Why are chemists great at solving problems?")
+            time.sleep(3)
+            print("They have all the solutions!")
+            time.sleep(2)
+        if num == 14:
+            print("Two blood cells met and fell in love")
+            time.sleep(3)
+            print("Alas, it was all in vein :(")
+        if num == 15:
+            print("What did one tectonic plate say when it bumped into another?")
+            time.sleep(3)
+            print("Sorry, my fault!")
+            time.sleep(2)
+        print("")
+
+    #main()
+    choice = input("Would you like to hear a joke? [Y/N] ")
+    choice = choice.strip()
+    if choice.lower() == 'y':
+        jokes()
+    elif choice.lower() == 'n':
+        print("Thank's for playing!")
+
+###############################################################################
+
+def choose_adventure():
+
+    #functions used in game
+
+#   def choose_adventure():
+#      print("This function is a placeholder for use in the larger compilation program")
+#       print("If you are seeing this message then you would have selected to play again after losing")
+#       exit()
+
+    def exit_message():
+        print("You have fallen prey to the dangers of the mountain")
+        print("GAME OVER \n")
+        play_again = input("Would you like to try again? [Y/N] ")
+        play_again = play_again.lower()
+        if play_again == 'y':
+            choose_adventure()
+        else:
+            game_select()
+
+    def survival_chance():
+            survive_chance = random.randint(1,6)
+            if survive_chance > 0 and survive_chance <=2:
+                survive_easy()
+            elif survive_chance > 2 and survive_chance <=5:
+                survive_medium()
+            elif survive_chance == 6:
+                survive_hard()
+
+    def traps(n):
+        if n == 1:
+            print("The floor drops from beneath you, revealing a series of sharp spikes covered in decaying flesh")
+            survival_chance()
+            print("You reach out and grasp the edge of the wall, pulling yourself to safety")
+        elif n == 2:
+            print("A light rumble sounds from above your head. As you peer up, the sound grows louder and cracks appear in the ceiling")
+            print("Rubble begins to fall from the ceiling")
+            survival_chance()
+            print("You leap forward, narrowly avoiding the stone and dirt cascading from the ceiling")
+        elif n == 3:
+            print("From behind you comes the sound of rushing water")
+            print("Peering behind, you see a torrent of water winding its way toward you")
+            survival_chance()
+            print("You rush forward, gaining the high ground as the water sweeps by")
+        elif n == 4:
+            print("As you proceed forward you begin to feel a slight vibration in the ground")
+            print("A low chittering sound rises in your ears as a multitude of large rats swarm throughout the hall")
+            print("As they approach, you see the hunger in their eyes")
+            survival_chance()
+            print("Standing still as a statue, the rats pass you by") 
+        elif n == 5:
+            print("As you step forward you feel your foot sink into the ground with an audible click")
+            print("A large metal ball swings its way towards you from the ceiling")    
+            survival_chance()
+            print("You dive to the floor, feeling the cold metal on the nape of your neck as you avoid the trap")
+        elif n == 6:
+            print("Turning a corner, you find yourself face-to-face with a massive spider web")
+            print("Many glowing eyes are visible beyond the web as your forward momentum carries you toward the web")
+            survival_chance()
+            print("You manage to stop yourself at the last moment from falling forward into the web")
+            print("Slipping backward, you scramble away from the web to safety, choosing another path forward")
+        elif n == 7:
+            print("As you step forward your foot sinks and you hear an audible click")
+            print("A green noxious gas flows in from the walls, permeating the air of the chamber")
+            survival_chance()
+            print("You notice the gas rising steadily. You fall to the floor quickly holding your breath and crawl to safety")
+        elif n == 8:
+            print("The hall begins to slope downard. A small incline at first and then sharper as you go deeper")
+            print("You notice the walls narrowing as the floor develops a steeper slope downward")
+            print("You begin to slip as you realize the following fall will surely trap you")
+            survival_chance()
+            print("You regain your footing and backtrack to the other route")
+        elif n == 0:      #all n == 0 or letter traps are scripted for particular points in the game
+            print("Your eyes on the forest trail, you do not notice the root in front of you")
+            print("Your foot catches the root, sending you tumbling forward into a pile of stone")
+            survive_easy()      #bypass survaval_chance to allow for maximum survival chance. Serves as a sort of tutorial
+            print("You catch your fall with your palms. Although a bit scraped and sore, you continue onwards")
+        elif n == 'a':
+            print("As you move the metal you feel the gate around you begin to crumble")
+            print("As the stones of the gate begin to fall around you you lurch forward")
+            survive_medium()
+            print("You manage to avoid the stones. Rising to your feet you realize you are trapped within the mountain")
+
+
+    def survive_easy():
+        roll = random.randint(1,6)
+        if roll > 2:
+            pass
+        else:
+            exit_message()
+
+    def survive_medium():
+        roll = random.randint(1,6)
+        if roll > 3:
+            pass
+        else:
+            exit_message()
+
+    def survive_hard():
+        roll = random.randint(1,6)
+        if roll > 3:
+            pass
+        else:
+            exit_message()
+
+
+
+    #main()
+
+    print("Welcome adventurer! You stand as the base of a mountain littered with ruins")
+    print("Many who have come before you have been lost.")
+    print("Some say they have been taken by angry spirits that inhabit these lands, others that time and decay have taken their toll and made the ruins dangerous to traverse")
+    print("Either way you must journey to the summit. \n")
+
+    print("You begin your journey on a forest trail leading to the mountain path. Ahead you see a fork in the road.")
+    print("The right path appears dark and shadowy, while the left bright and well lit.")
+    path1 = input("Would you like to take the left or right path? [L/R] ")
+    rand_p1 = random.randint(1,2)   #randomized variable to determine likelihood of traps throughout game
+    if path1.lower() == 'l' and rand_p1 == 1:
+        traps(0)
+    elif path1.lower() == 'r' and rand_p1 == 2:
+        traps(0)
+    print("You make your way down the forest path, out of the darkness of the woods and into the shadow of the mountain \n")
+
+    print("You come upon a ruined gate made of stone and metal built into the side of the mountain")
+    print("Looking aither direction, you realize the only way up the mountain is through the gate and ruins beyond. The gate looks unstable.")
+    path2 = input("Do you risk crawling under the partly open gate or moving some of the stone to the side to squeeze through the stone on the side? [crawl/squeeze] ")
+    if path2.lower() == 'crawl' and rand_p1 == 2:
+        traps('a')
+    elif path2.lower() == 'squeeze' and rand_p1 == 1:
+        traps('a')
+    print("Now beyond the gate, you find yourself in a dark hall \n")
+
+    print("Moving forward into the hall your eyes adjust and you see two different paths you can take.")
+    path3 = input("Both look the same to you, but you must choose, left or right? [L/R]")
+    if path3.lower() == 'r' and rand_p1 == 1:
+        traps(random.randint(1,6))
+    elif path3.lower() == 'r' and rand_p1 == 2:
+        traps(random.randint(1,6))
+    print('\n')
+
+
+    print("As you wind around the corner, you are faced with a circular room with two staircases winding their way up to different points")
+    path4 = input("Do you choose the staircase that takes you to the higher point or the lower? [high/low]")
+    if path4.lower() == 'high' and rand_p1 == 2:
+        traps(random.randint(1,6))
+    elif path4.lower() == 'low' and rand_p1 == 1:
+        traps(random.randint(1,6))
+    print('\n')
+
+    print("Now past the staircase, you find yourself within an inclining passage taking you higher up the mountain")
+    print("The scent grows more dank as you find youself deeper in the mountain, and the corridor grows darker")
+    path5 = input("Do you want to light a torch to help you see? [Y/N]")
+    if path5.lower() == 'y' and rand_p1 == 1:
+        traps(random.randint(1,6))
+    elif path5.lower() == 'n' and rand_p1 == 2:
+        traps(random.randint(1,6))
+    print("You continue onward, the darkness growing as you move forward, but with just enough light to see \n")
+
+    print("You now find yourself at the crossroads between two hallways. Once has a slight descent, the other a slight ascent.")
+    path6 = input("Do you take the higher or lower path? [high/low]")
+    if path6.lower() == 'high' and rand_p1 == 2:
+        traps(random.randint(1,6))
+    elif path6.lower() == 'low' and rand_p1 == 1:
+        traps(random.randint(1,6))
+    print("\n")
+
+    print("As you ascend through the ruins you come to a large cathedral-like room, with bright white light pouring out the other side")
+    print("Your eyes have difficulty adjusting to the light, but you can smell the fresh mountain air beyond")
+    path7 = input("Do you rush forward to your freedom through the center of the hall or move slowly along the side? [center/side]")
+    if path7.lower() == 'center' and rand_p1 == 1:
+        traps(random.randint(1,6))
+    elif path7.lower() == 'side' and rand_p1 == 2:
+        traps(random.randint(1,6))
+    print("You make it to the door, breathing a sigh of relief as the cold mountain air hits you \n")
+
+    print("Emerging from the mountain ruins onto the peak, you see an altar covered in snow with a large chest at the center")
+    print("You approach and read the inscription. It says:")
+    print("ANY WHO TOUCH THE MOUNTAIN'S TREASURE RISK DEATH")
+    print("Clearly this chest is trapped, much like the ruins below.")
+    path8 = input("Do you want to open the chest, or leave it and descend the mountain with your life intact? [open/leave]")
+    if path8.lower() == 'open':
+        print("spikes emerge from the snow beneath the chest")
+        survive_hard()
+        print("You throw yourself backwards, narrowly avoiding the spikes")
+        print("Approaching the chest, you claim your treasure!")
+    if path8 == 'leave':
+        print("You turn from the treasure. Perhaps wealth is not worth further risk to your life")
+    print("As you descend the mountain, you somehow avoid any further traps \n")
+
+    print("Congratulations on beating the game! Whether you chose the treasure or not, you should hire this author for your software engineering needs!")
+
+
+###############################################################################
+
+#main()
+
+print("Welcome to Jeremy's game compilation! \n")
+print("If you are running this program and are looking for new employees with Python, C, and C++ background, please hire him!")
+
+game_select()
+
+###############################################################################
+
+

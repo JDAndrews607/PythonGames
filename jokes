@@ -1,0 +1,107 @@
+#A joke telling program where a user will be given the choice to hear a series of jokes
+#Jokes taken from "https://www.weareteachers.com/science-jokes/"
+
+import random
+import time
+
+def jokes():
+
+    pickJoke = random.randint(1, 16)
+    joke_list(pickJoke)
+
+    func_choice = input("Would you like to hear another joke? [Y/N] ")
+    func_choice = func_choice.strip()
+    if func_choice.lower() == 'y':
+        jokes()
+    elif func_choice.lower() == 'n':
+        print("Thanks for playing!")
+
+
+def joke_list(num):
+    print("")
+    if num == 1:
+        print("I was reading a book on helium")
+        time.sleep(3)
+        print("I couldn't put it down!")
+        time.sleep(2)
+    if num == 2:
+        print("How do you cut the sea in half?")
+        time.sleep(3)
+        print("With a sea-saw!")
+        time.sleep (2)
+    if num == 3:
+        print("WHy did the germ cross the microscope?")
+        time.sleep(3)
+        print("To get to the other slide!")
+        time.sleep(2)
+    if num == 4:
+        print("What do computers like to eat?")
+        time.sleep(3)
+        print("Chips!")
+        time.sleep(2)
+    if num == 5:
+        print("What can run but cannot walk?")
+        time.sleep(3)
+        print("Water!")
+        time.sleep(2)
+        print("That one was a bit deep")
+        time.sleep(2)
+    if num == 6:
+        print("Why did the scientist take out his doorbell?")
+        time.sleep(3)
+        print("He wanted the no-bell prize!")
+        time.sleep(2)
+    if num == 7:
+        print("Why didn't the skeleton go to the ball?")
+        time.sleep(3)
+        print("He didn't have any-body to go with!")
+        time.sleep(2)
+    if num == 8:
+        print("What kind of hair do oceans have?")
+        time.sleep(3)
+        print("Wavy!")
+        time.sleep(2)
+    if num == 9:
+        print("What kind of tree can fit into your hand?")
+        time.sleep(3)
+        print("A palm tree!")
+        time.sleep(2)
+    if num == 10:
+        print("Why didn't the skeleton cross the road?")
+        time.sleep(3)
+        print("He didn't have the guts!")
+        time.sleep(2)
+    if num == 11:
+        print("Why is the pH of youtube very stable?")
+        time.sleep(3)
+        print("Because it constantly buffers!")
+        time.sleep(2)
+    if num == 12:
+        print("What do you call an acid with an attitude?")
+        time.sleep(3)
+        print("An a-mean-oh acid!")
+        time.sleep(2)
+    if num == 13:
+        print("Why are chemists great at solving problems?")
+        time.sleep(3)
+        print("They have all the solutions!")
+        time.sleep(2)
+    if num == 14:
+        print("Two blood cells met and fell in love")
+        time.sleep(3)
+        print("Alas, it was all in vein :(")
+    if num == 15:
+        print("What did one tectonic plate say when it bumped into another?")
+        time.sleep(3)
+        print("Sorry, my fault!")
+        time.sleep(2)
+    print("")
+
+#main()
+choice = input("Would you like to hear a joke? [Y/N] ")
+choice = choice.strip()
+if choice.lower() == 'y':
+    jokes()
+elif choice.lower() == 'n':
+    print("Thank's for playing!")
+

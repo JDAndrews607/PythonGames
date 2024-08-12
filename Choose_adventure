@@ -1,0 +1,195 @@
+#This is a choose your own adventure style fantasy game. You will start out on a forest trail and be taken to the peak of a mountain fortress through a series of ruins.
+#These ruins will have randomized traps that you could trigger as you make your way through the game, giving a slim probability of making it to the peak
+
+import random
+import time
+
+#functions used in game
+
+def choose_adventure():
+    print("This function is a placeholder for use in the larger compilation program")
+    print("If you are seeing this message then you would have selected to play again after losing")
+    exit()
+
+def exit_message():
+    print("You have fallen prey to the dangers of the mountain")
+    print("GAME OVER \n")
+    play_again = input("Would you like to try again? [Y/N] ")
+    play_again = play_again.lower()
+    if play_again == 'y':
+        choose_adventure()
+        exit()
+    else:
+        exit()
+
+def survival_chance():
+        survive_chance = random.randint(1,6)
+        if survive_chance > 0 and survive_chance <=2:
+            survive_easy()
+        elif survive_chance > 2 and survive_chance <=5:
+            survive_medium()
+        elif survive_chance == 6:
+            survive_hard()
+
+def traps(n):
+    if n == 1:
+        print("The floor drops from beneath you, revealing a series of sharp spikes covered in decaying flesh")
+        survival_chance()
+        print("You reach out and grasp the edge of the wall, pulling yourself to safety")
+    elif n == 2:
+        print("A light rumble sounds from above your head. As you peer up, the sound grows louder and cracks appear in the ceiling")
+        print("Rubble begins to fall from the ceiling")
+        survival_chance()
+        print("You leap forward, narrowly avoiding the stone and dirt cascading from the ceiling")
+    elif n == 3:
+        print("From behind you comes the sound of rushing water")
+        print("Peering behind, you see a torrent of water winding its way toward you")
+        survival_chance()
+        print("You rush forward, gaining the high ground as the water sweeps by")
+    elif n == 4:
+        print("As you proceed forward you begin to feel a slight vibration in the ground")
+        print("A low chittering sound rises in your ears as a multitude of large rats swarm throughout the hall")
+        print("As they approach, you see the hunger in their eyes")
+        survival_chance()
+        print("Standing still as a statue, the rats pass you by") 
+    elif n == 5:
+        print("As you step forward you feel your foot sink into the ground with an audible click")
+        print("A large metal ball swings its way towards you from the ceiling")    
+        survival_chance()
+        print("You dive to the floor, feeling the cold metal on the nape of your neck as you avoid the trap")
+    elif n == 6:
+        print("Turning a corner, you find yourself face-to-face with a massive spider web")
+        print("Many glowing eyes are visible beyond the web as your forward momentum carries you toward the web")
+        survival_chance()
+        print("You manage to stop yourself at the last moment from falling forward into the web")
+        print("Slipping backward, you scramble away from the web to safety, choosing another path forward")
+    elif n == 7:
+        print("As you step forward your foot sinks and you hear an audible click")
+        print("A green noxious gas flows in from the walls, permeating the air of the chamber")
+        survival_chance()
+        print("You notice the gas rising steadily. You fall to the floor quickly holding your breath and crawl to safety")
+    elif n == 8:
+        print("The hall begins to slope downard. A small incline at first and then sharper as you go deeper")
+        print("You notice the walls narrowing as the floor develops a steeper slope downward")
+        print("You begin to slip as you realize the following fall will surely trap you")
+        survival_chance()
+        print("You regain your footing and backtrack to the other route")
+    elif n == 0:      #all n == 0 or letter traps are scripted for particular points in the game
+        print("Your eyes on the forest trail, you do not notice the root in front of you")
+        print("Your foot catches the root, sending you tumbling forward into a pile of stone")
+        survive_easy()      #bypass survaval_chance to allow for maximum survival chance. Serves as a sort of tutorial
+        print("You catch your fall with your palms. Although a bit scraped and sore, you continue onwards")
+    elif n == 'a':
+        print("As you move the metal you feel the gate around you begin to crumble")
+        print("As the stones of the gate begin to fall around you you lurch forward")
+        survive_medium()
+        print("You manage to avoid the stones. Rising to your feet you realize you are trapped within the mountain")
+
+
+def survive_easy():
+    roll = random.randint(1,6)
+    if roll > 2:
+        pass
+    else:
+        exit_message()
+
+def survive_medium():
+    roll = random.randint(1,6)
+    if roll > 3:
+        pass
+    else:
+        exit_message()
+
+def survive_hard():
+    roll = random.randint(1,6)
+    if roll > 3:
+        pass
+    else:
+        exit_message()
+
+
+
+#main()
+
+print("Welcome adventurer! You stand as the base of a mountain littered with ruins")
+print("Many who have come before you have been lost.")
+print("Some say they have been taken by angry spirits that inhabit these lands, others that time and decay have taken their toll and made the ruins dangerous to traverse")
+print("Either way you must journey to the summit. \n")
+
+print("You begin your journey on a forest trail leading to the mountain path. Ahead you see a fork in the road.")
+print("The right path appears dark and shadowy, while the left bright and well lit.")
+path1 = input("Would you like to take the left or right path? [L/R] ")
+rand_p1 = random.randint(1,2)   #randomized variable to determine likelihood of traps throughout game
+if path1.lower() == 'l' and rand_p1 == 1:
+    traps(0)
+elif path1.lower() == 'r' and rand_p1 == 2:
+    traps(0)
+print("You make your way down the forest path, out of the darkness of the woods and into the shadow of the mountain \n")
+
+print("You come upon a ruined gate made of stone and metal built into the side of the mountain")
+print("Looking aither direction, you realize the only way up the mountain is through the gate and ruins beyond. The gate looks unstable.")
+path2 = input("Do you risk crawling under the partly open gate or moving some of the stone to the side to squeeze through the stone on the side? [crawl/squeeze] ")
+if path2.lower() == 'crawl' and rand_p1 == 2:
+    traps('a')
+elif path2.lower() == 'squeeze' and rand_p1 == 1:
+    traps('a')
+print("Now beyond the gate, you find yourself in a dark hall \n")
+
+print("Moving forward into the hall your eyes adjust and you see two different paths you can take.")
+path3 = input("Both look the same to you, but you must choose, left or right? [L/R]")
+if path3.lower() == 'r' and rand_p1 == 1:
+    traps(random.randint(1,6))
+elif path3.lower() == 'r' and rand_p1 == 2:
+    traps(random.randint(1,6))
+print('\n')
+
+
+print("As you wind around the corner, you are faced with a circular room with two staircases winding their way up to different points")
+path4 = input("Do you choose the staircase that takes you to the higher point or the lower? [high/low]")
+if path4.lower() == 'high' and rand_p1 == 2:
+    traps(random.randint(1,6))
+elif path4.lower() == 'low' and rand_p1 == 1:
+    traps(random.randint(1,6))
+print('\n')
+
+print("Now past the staircase, you find yourself within an inclining passage taking you higher up the mountain")
+print("The scent grows more dank as you find youself deeper in the mountain, and the corridor grows darker")
+path5 = input("Do you want to light a torch to help you see? [Y/N]")
+if path5.lower() == 'y' and rand_p1 == 1:
+    traps(random.randint(1,6))
+elif path5.lower() == 'n' and rand_p1 == 2:
+    traps(random.randint(1,6))
+print("You continue onward, the darkness growing as you move forward, but with just enough light to see \n")
+
+print("You now find yourself at the crossroads between two hallways. Once has a slight descent, the other a slight ascent.")
+path6 = input("Do you take the higher or lower path? [high/low]")
+if path6.lower() == 'high' and rand_p1 == 2:
+    traps(random.randint(1,6))
+elif path6.lower() == 'low' and rand_p1 == 1:
+    traps(random.randint(1,6))
+print("\n")
+
+print("As you ascend through the ruins you come to a large cathedral-like room, with bright white light pouring out the other side")
+print("Your eyes have difficulty adjusting to the light, but you can smell the fresh mountain air beyond")
+path7 = input("Do you rush forward to your freedom through the center of the hall or move slowly along the side? [center/side]")
+if path7.lower() == 'center' and rand_p1 == 1:
+    traps(random.randint(1,6))
+elif path7.lower() == 'side' and rand_p1 == 2:
+    traps(random.randint(1,6))
+print("You make it to the door, breathing a sigh of relief as the cold mountain air hits you \n")
+
+print("Emerging from the mountain ruins onto the peak, you see an altar covered in snow with a large chest at the center")
+print("You approach and read the inscription. It says:")
+print("ANY WHO TOUCH THE MOUNTAIN'S TREASURE RISK DEATH")
+print("Clearly this chest is trapped, much like the ruins below.")
+path8 = input("Do you want to open the chest, or leave it and descend the mountain with your life intact? [open/leave]")
+if path8.lower() == 'open':
+    print("spikes emerge from the snow beneath the chest")
+    survive_hard()
+    print("You throw yourself backwards, narrowly avoiding the spikes")
+    print("Approaching the chest, you claim your treasure!")
+if path8 == 'leave':
+    print("You turn from the treasure. Perhaps wealth is not worth further risk to your life")
+print("As you descend the mountain, you somehow avoid any further traps \n")
+
+print("Congratulations on beating the game! Whether you chose the treasure or not, you should hire this author for your software engineering needs!")
